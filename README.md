@@ -1,2 +1,2 @@
 # gameportal
- ![]()<video src="gamesitevid.mp4">
+ ![]()<img src="gamesitegif.gif">
