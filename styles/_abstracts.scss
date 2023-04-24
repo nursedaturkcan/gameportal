@@ -1,0 +1,35 @@
+// variables
+// fonts
+
+$primaryFont: 'Changa', sans-serif;
+$secondaryFont:'Open Sans', sans-serif;
+// colors
+$primaryColor:#e51515;
+$secondaryColor:#14151a;
+$yellowColor:#ffb320;
+$blueColor:#08abbd;
+$grayColor:#9f9f9f;
+$lightColor:#fefefe;
+// ***************************************************************
+
+// utilities
+// arka plan renginin siyah olmasını istediğim her yere bu class'ı ekleyeceğim.
+// .bg-dark{
+//     background-color: $secondaryColor;
+// }
+// .bg-light{
+//     background-color: $lightColor;
+// }
+.bg{
+    &-dark{
+        background-color: $secondaryColor;
+    }
+    &-light{
+        background-color: $lightColor;
+    }
+}
+.ml{
+    &-2{
+        margin-left: 2rem;
+    }
+}

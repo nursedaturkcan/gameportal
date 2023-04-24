@@ -1,0 +1,58 @@
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+// 1 rem 10 px olarak ayarlandı.
+html{
+    font-size: 10px;
+}
+body{
+    // font-family: $secondaryFont;
+    color: $grayColor;
+    background-color: $lightColor;
+}
+.container{
+    
+   max-width: 114rem;
+   margin: auto;
+   width:100%;
+}
+a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: $primaryFont;
+    color: $lightColor;
+}
+ul{
+    list-style: none;
+}
+img{
+    // resim içinde bulunduğu div'den taşmasın diye.
+    width: 100%;
+}
+h1,h2,h3,h4,h5{
+    font-family: $primaryFont;
+    color: $primaryColor;
+    font-weight: 300;
+    letter-spacing: .3rem;
+    text-transform:uppercase ;
+}
+h1{
+    font-size: 7rem;
+}
+h2{
+    
+    font-size: 5rem;
+    color: $lightColor;
+
+}
+h4{
+    
+    color: $lightColor;
+    
+    font-size: 2rem;
+}
+section{
+    padding: 8rem 0;
+}

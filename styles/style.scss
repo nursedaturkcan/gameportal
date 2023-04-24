@@ -1,0 +1,764 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@500&family=Dosis:wght@300;500;800&family=Open+Sans:wght@300&display=swap');
+@import 'abstracts';
+@import 'generalsettings';
+@import 'components';
+@import 'mixin';
+@import 'animations';
+
+
+// header başlangıç
+
+
+
+// topheader
+.topHeader {
+    border-bottom: 1px solid $primaryColor;
+
+    .container {
+        @include flex-display(flex, space-between, center);
+        // display: flex;
+        // justify-content: space-between;
+        // align-items: center;
+
+        .logo {
+            h1 {
+                font-size: 5rem;
+                font-family: $primaryFont;
+                color: $primaryColor;
+            }
+        }
+
+        .socialMenu {
+            display: flex;
+
+            li {
+                margin: 0 1rem;
+                padding: 1rem;
+
+                a {
+                    font-size: 2rem;
+                    transition: all .3s ease-in-out;
+                }
+
+                // list elemaları hover olunca
+                &:hover a {
+                    color: $primaryColor;
+                }
+            }
+        }
+
+        .loginArea {
+            span {
+                display: none; //büyük ekran için iconları görünmez yaptık
+            }
+        }
+    }
+}
+
+.navigationHeader {
+    .navbar {
+        @include flex-display(flex, space-between, center);
+
+        .navbarList {
+            display: flex;
+
+            // gap: 2rem;
+            li {
+                line-height: 8rem;
+                position: relative;
+                transition: all .5s;
+
+                .dropdown {
+                    position: absolute;
+                    background-color: lighten($secondaryColor, 10%);
+                    // lighten ve darken sass özel fonksiyonlarıdır. secondary colordan 10% daha açık renk yap dedik.
+                    width: 150%;
+                    left: 50%;
+                    z-index: 10;
+                    top: 8.1rem;
+                    transition: all .5s;
+                    opacity: 0;
+                    visibility: hidden;
+
+                    li {
+                        line-height: 4rem
+                    }
+                }
+
+                &:hover {
+                    background-color: $primaryColor;
+
+                    // dropdown class'ına sahip a!nın üzerine hover olduğunda dropdown ı görünür yapmak.
+                    & .dropdown {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+
+            a {
+                font-size: 1.6rem;
+                letter-spacing: 2px;
+                padding: 1rem; //iki rem yapacagım
+            }
+
+        }
+    }
+
+    .searchArea {
+
+        input,
+        button {
+            border: none;
+            background-color: transparent;
+            color: $lightColor;
+
+        }
+
+        .searchInput {
+            border-bottom: 1px solid $primaryColor;
+            padding: .5rem;
+
+        }
+
+        button {
+            margin-left: -5rem;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.2);
+            }
+        }
+
+
+
+    }
+}
+
+// header end
+// ************************************************
+// section start
+.mainSlider {
+    .single-slide {
+        position: relative;
+
+        .slideOverlay {
+            // yazılari resmin içinde hizalama
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellips at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, .9) 100%);
+
+            .slideContent {
+                position: absolute;
+                top: 25%;
+                width: 80%;
+                border-top: 2px solid $primaryColor ;
+                border-bottom: 2px solid $primaryColor ;
+                padding: 10rem 7rem;
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, .6));
+                animation: mainAni 3s ease-out; //animation dosyasındaki animasyonun eklenmesi
+
+                p {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+}
+
+// custom owl carousel
+.owl-theme {
+    position: relative;
+
+    .owl-dots {
+        position: absolute;
+        top: 6rem;
+        right: 10%;
+        z-index: 5;
+
+        .owl-dot {
+            display: inline-block;
+            width: 3.3rem;
+            height: 3.3rem;
+            margin-right: 1.3rem;
+            border-radius: 4rem;
+            background-color: transparent;
+            transition: all .5s;
+
+            &.active,
+            &:hover {
+                transform: scale(1.2);
+
+            }
+        }
+    }
+}
+
+// LATEST NEWS START
+.latestNews {
+    display: flex;
+    background-color: $primaryColor;
+    height: 8rem;
+    align-items: center;
+
+    &Title {
+        // ana divin %25'ini kapla.
+        flex-basis: 25%;
+        text-align: right;
+        padding-right: 2rem;
+
+    }
+
+    &Content {
+        // ekranın %75'ini kapla.
+        flex-basis: 75%;
+        background-color: $secondaryColor;
+        height: 100%;
+
+        .newsTicker {
+            @include flex-display(flex, space-between, center);
+            line-height: 8rem;
+
+            p {
+                color: $lightColor;
+                font-size: 1.4rem;
+
+            }
+        }
+    }
+}
+
+// LATEST NEWS END
+
+
+
+
+
+// section end
+// ************************************************
+// recent games start
+.recentGames {
+    background-color: $lightColor;
+
+    &Content {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 4rem;
+
+        .recentGame1 {
+
+            grid-column: 1 / span 3;
+        }
+
+        .recentGameFeatured {
+            @include flex-display(flex, space-between, center);
+
+            .rating {
+                width: 5rem;
+                height: 5rem;
+                font-size: 2rem;
+                line-height: 5rem;
+            }
+
+            .gameTitle {
+                // important ile override yaptık
+                font-size: 2.4rem !important;
+            }
+        }
+    }
+
+    .recentGame {
+        width: 100%;
+        height: 100%;
+        background-color: $secondaryColor;
+
+        &Thumbnail {
+            position: relative;
+            overflow: hidden;
+
+
+            img {
+                width: 100%;
+                transition: all .5s;
+
+            }
+
+            // kırmızı efektin ayarlanması
+            &::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '';
+                background-color: rgba($primaryColor, .6);
+                width: 100%;
+                height: 100%;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .5s;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            .recentGameThumbnail {
+                &::after {
+                    visibility: visible;
+                    opacity: 1;
+                }
+
+                img {
+                    transform: scale(1.1) rotate(5deg);
+                }
+
+                .rating {
+                    opacity: 1;
+                    transition: all .5s;
+                }
+            }
+
+        }
+
+        &Content {
+            padding: 2rem;
+
+            p {
+                font-size: 1.3rem;
+                line-height: 1.8;
+
+            }
+
+            .gameTitle {
+                color: $lightColor;
+                margin-bottom: 1.2rem;
+                font-size: 1.8rem;
+                letter-spacing: 0;
+            }
+        }
+    }
+
+    .sectionTitle h2 {
+        color: $primaryColor;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .gameMeta {
+        @include flex-display(flex, space-between, center);
+        font-size: 1.2rem;
+
+        .gameDate {
+            color: $yellowColor;
+
+            &:hover {
+                color: darken($yellowColor, 30%);
+                transition: all .5s;
+            }
+        }
+
+        .gameComment {
+            color: $blueColor;
+        }
+    }
+
+
+}
+
+// recent games end
+// ************************************************
+// review start
+.lastReview {
+    height: 50vh;
+    @include flex-display(flex, space-between, center);
+    padding: 0;
+    background-color: $secondaryColor;
+
+    &Detail {
+        flex-basis: 40%;
+    }
+
+    &Image {
+        flex-basis: 60%;
+        background-image: linear-gradient(to right bottom, rgba($primaryColor, 1), rgba($primaryColor, .1)), url("/images/game_3.jpg");
+        // koordinat eksenine göre kesim yapıldı. sol üst köeden 80% kesalip 20% kaldı.
+        // https://bennettfeely.com/clippy/ adresinden faydalanıldı.
+        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+
+
+        height: 100%;
+        background-size: cover;
+
+    }
+}
+
+// review end
+// ************************************************
+// galery start
+.galery {
+    width: 90%;
+    margin: auto;
+}
+
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_opacity den faydalanıldı.
+.masonary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 20rem);
+    gap: 1rem;
+
+    &Item {
+        cursor: pointer;
+        position: relative;
+        background-color: $primaryColor;
+
+        &1 {
+            // başlangıcın 1.satır 1.sutun
+            grid-row: 1;
+            grid-column: 1;
+        }
+
+        &2 {
+            grid-row: 1 /span 2;
+            grid-column: 2;
+
+        }
+
+        &3 {
+
+            grid-row: 1;
+            grid-column: 3/span 2;
+        }
+
+        &4 {
+
+            grid-row: 2;
+            grid-column: 1;
+        }
+
+        &5 {
+
+            grid-row: 2;
+            grid-column: 3;
+        }
+
+        &6 {
+
+            grid-row: 2/span 2;
+            grid-column: 4;
+        }
+
+        &7 {
+            grid-row: 3;
+            grid-column: 1;
+        }
+
+        &8 {
+
+            grid-row: 3;
+            grid-column: 2 /span 2;
+        }
+
+    }
+
+    .masonaryImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.masonaryItem:hover .masonaryImage {
+    transition: 1s ease;
+    opacity: 0.3;
+}
+
+.masonaryItem:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: $blueColor;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+
+// galery end
+// ************************************************
+// showcase start
+.showcase {
+    background-color: $secondaryColor;
+    margin-bottom: 20rem;
+
+    &Content {
+        display: flex;
+        // görselin hover oldugunda diğerinin üzerine genişlerken gelmemesi için
+        overflow: hidden;
+
+        .showcaseItem {
+            position: relative;
+
+            &:hover {
+                transform: scale(1.2);
+                transition: all .5s;
+
+                .ItemImage:before,
+                .itemContent i {
+                    opacity: 1;
+                }
+
+            }
+
+            width:calc(1500px/3);
+
+            .ItemImage {
+
+                height: 100%;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba($primaryColor, .6);
+                    opacity: 0;
+                    transition: all .5s ease-in-out;
+
+                }
+            }
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .itemContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+
+            i {
+                font-size: 5rem;
+                margin: 1rem;
+                opacity: 0;
+
+                &:hover {
+                    color: darken($lightColor, 20%);
+                    transition: all .5s;
+                }
+            }
+        }
+    }
+}
+
+// showcase end
+// ************************************************
+// team start
+.ourteam {
+    text-align: center;
+}
+
+.team {
+
+    margin-top: 50px;
+    background-color: $lightColor;
+
+
+    .team-members {
+        background-color: $secondaryColor;
+        @include flex-display(flex, space-between, center);
+        padding: 0 15rem;
+        height: 500px;
+
+        .flip-card {
+            width: 300px;
+            height: 400px;
+            perspective: 1000px;
+
+            // elementin derinlik algısı ve 3boyutlu görünümü
+            .flip-card-inner {
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d;
+                transition: transform 0.5s;
+
+                .flip-card-front,
+                .flip-card-back {
+                    width: 100%;
+                    height: 100%;
+                    @include flex-display(flex, space-between, center);
+                    flex-direction: column;
+
+                    backface-visibility: hidden;
+                }
+
+                .flip-card-front {
+                    background-color: $primaryColor;
+
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .flip-card-back {
+                    background-color: $yellowColor;
+                    color: #fff;
+                    padding: 20px;
+                    transform: rotateY(180deg);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    p {
+                        font-size: 3rem;
+                        text-align: center;
+                        line-height: 20rem;
+                    }
+
+                    .icons {
+
+                        width: 100%;
+                        margin-bottom: 16rem;
+                        @include flex-display(flex, space-between, center);
+
+                        a {
+                            font-size: 3rem;
+
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+
+
+
+
+
+.flip-card img {
+    object-fit: cover;
+
+}
+
+// team end
+// contact section start
+.contact {
+    border: 3px solid black;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.9) 100%), url("/images/contact.jpg");
+    background-size: cover;
+    min-height: 100vh;
+
+    &-content {
+        display: flex;
+        margin-top: 4rem;
+        align-items: center;
+
+        &-detail {
+            background-color: rgba($primaryColor, .8);
+            flex: 1;
+            color: $lightColor;
+            min-height: 40rem;
+            margin-right: -5rem;
+            z-index: 2;
+            @include flex-display(flex, space-between, center);
+            flex-direction: column;
+            padding: 4rem;
+
+            h3 {
+                color: $lightColor;
+                font-size: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            ul {
+                li {
+                    display: flex;
+                    margin-bottom: 4rem;
+                    align-items: center;
+
+                    i {
+                        margin-right: 2rem;
+                        font-size: 2rem;
+                    }
+
+                    p {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+
+        &-form {
+            background-color: rgba($secondaryColor, .8);
+            flex: 2;
+            min-height: 50rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            border: 3px solid $primaryColor;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                padding-left: 40%;
+                input,textarea{
+                    width: 100%;
+                    padding: 1rem;
+                    border: none;
+                    text-transform: uppercase;
+                    font-family: inherit;
+                    font-size: 1.4rem;
+                    display: block;
+                 
+                }
+                .send{
+                    background-color: $primaryColor;
+                    color: $lightColor;
+                    &:hover{
+                        transform: scale(1.2);
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+// contact section end

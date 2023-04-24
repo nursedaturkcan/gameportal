@@ -1,0 +1,17 @@
+// slidecontent içerisindeki animasyon 
+@keyframes mainAni{
+     0%{   //ilk durum
+        opacity: 0;
+        transform: translateY(5rem);
+        border-top: 0 solid $primaryColor;
+    }
+    50%{   //yarı zamanda
+        transform: translateY(-5rem);
+       
+    }
+    100%{ //animasyon bitişinde
+        opacity: 1; //opacity arttı. Kenar çizgiler arttı
+        transform: translate(0);
+        border: 2px solid $primaryColor;
+    }
+}

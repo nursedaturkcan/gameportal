@@ -1,0 +1,138 @@
+// butonların ayarlanması
+.btn {
+    background-color: $lightColor;
+    padding: 1rem 2rem;
+    color: $primaryColor;
+
+    font-size: 1.6rem;
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+
+    &:hover {
+        background-color: $primaryColor;
+        color: $lightColor;
+    }
+
+    &-primary {
+        background-color: $primaryColor;
+        color: $lightColor;
+
+        &:hover {
+            //.btn-primary:hover
+            background-color: $lightColor;
+            color: $primaryColor;
+        }
+    }
+}
+
+// badges
+.badge {
+    border: none;
+    padding: .2rem 2.4rem;
+    font-size: 1.6rem;
+    color: $lightColor;
+    background-color: $primaryColor;
+    margin: 5rem;
+    letter-spacing: .2rem;
+
+    &-tech {
+        background-color: $blueColor;
+    }
+
+    &-games {
+        background-color: $yellowColor;
+    }
+}
+
+// rating tasarlanması
+.rating {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: $lightColor;
+    // üzerine mouse geldiğinde gözükmesi için
+    opacity: 0;
+    z-index: 100;
+    line-height: 3rem;
+    font-size: 1.4rem;
+    font-family: $primaryFont;
+    text-align: center;
+    border-radius: 50%;
+    color: $primaryColor;
+}
+
+.review {
+    padding: 5rem;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-left: 10rem;
+    border-left: 1px solid $primaryColor;
+    border-bottom: 1px solid $primaryColor;
+    transform: skew(-28deg); //border'ın eğilmesi için yapıldı ama tüm içerik eğildi
+
+    //içerikleri ters yönde eğip sorundan kurtulacağız
+    //review'un içindeki tüm childların seçilmesi.
+    &>* {
+        transform: skew(28deg);
+    }
+
+    .Tag {
+        font-size: 1.5rem;
+        color: $lightColor;
+        text-transform: uppercase;
+    }
+
+    p {
+        margin: 1rem 0;
+    }
+
+    &User {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 8rem;
+            margin-right: 3rem;
+            border-radius: 50%;
+        }
+
+        &Detail {
+            font-family: $primaryFont;
+            margin-right: 3rem;
+
+            .name {
+                color: $primaryColor;
+            }
+
+            .date {
+                color: $yellowColor;
+            }
+        }
+
+        &Platform {
+
+            // son çocouk hariç yani windows
+            :not(:last-child) {
+                color: $primaryColor;
+            }
+
+            .fa-brands {
+                margin: 0 .5rem;
+                font-size: 2rem;
+            }
+        }
+
+        &Rating {
+            margin-left: auto; //olabildiğince sağa kaydırma
+
+            .checked {
+                color: gold;
+            }
+        }
+    }
+}
+
+
